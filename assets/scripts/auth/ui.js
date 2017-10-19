@@ -36,6 +36,7 @@ const signInSuccess = (data) => {
   $('#signUpModal').modal('hide')
   $('#infoMessage').html('&nbsp;')
   $('#sign-in-register').addClass('hidden')
+  $('#getKidsButton').removeClass('hidden')
   authHelper.setSignInSuccessShowHide()
 }
 
@@ -48,6 +49,7 @@ const signOutSuccess = () => {
   console.log('User signed out successfully')
   $('#result').text('Signed out successfully!!')
   $('#sign-in-register').removeClass('hidden')
+  $('#kids').html('&nbsp;')
   authHelper.setSignOutSuccessShowHide()
   app.user = null
 }

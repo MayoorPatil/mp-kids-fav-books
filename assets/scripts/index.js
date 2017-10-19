@@ -14,7 +14,9 @@ $(() => {
 // require('./example')
 
 const authEvents = require('./auth/events.js')
+const kidEvents = require('./kids/events.js')
 
 $(() => {
   authEvents.addAuthHandlers()
+  kidEvents.addKidHandlers()
 })

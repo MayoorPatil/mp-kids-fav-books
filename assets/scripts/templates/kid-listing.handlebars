@@ -1,0 +1,13 @@
+{{#each kids as |kid|}}
+<div data-id="{{kid.id}}" class="media">
+    <div class="media-left">
+      <img src="{{kid.image_url}}" class="media-object img-rounded" alt="Image" width="150" height="100">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{kid.first_name}}</h4>
+      <p>{{kid.last_name}}</p>
+    </div><br>
+    <button data-id="{{kid.id}}" type="button" class="btn btn-warning btn-xs" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#bookModal">Update Kid</button>
+  </div>
+  <hr>
+{{/each}}
