@@ -1,25 +1,138 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Example</title>
 
-      <!-- Do not add `link` tags-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Do not add `link` tags unless you know what you are doing -->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <!-- Do not add `script` tags-->
+      <!-- Do not add `script` tags unless you know what you are doing -->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body class="container-fluid">
-      <h1>Example</h1>
+  </head>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
-    </body>
+  <body class="container">
+    <!-- <button id="getBooksButton" class="btn btn-default">Get Books!</button>
+    <button id="clearBooksButton" class="btn btn-default">Clear Books!</button>
+    <div id="content" class="content">
+    </div> -->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar">&nbsp;</span>
+        <span class="icon-bar">&nbsp;</span>
+        <span class="icon-bar">&nbsp;</span>
+      </button>
+      <a class="navbar-brand" href="#">Amala's Favorite Books</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left">
+        <button id="sign-in-register" type="button" class="btn btn-success btn-sm" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#signUpModal">Sign-In / Register</button>
+        <button id="change-pwd-btn" type="button" class="btn btn-info hidden btn-sm" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#signUpModal">Change Password</button>
+        <button id="getBooksButton" type="button" class="btn btn-info btn-sm">Get Books</button>
+        <button id="add-book" type="button" class="btn btn-info btn-sm" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#bookModal">Add New Book</button>
+      </form>
+      <form id="sign-out" class="navbar-form navbar-right hidden">
+          <button type="submit" class="btn btn-warning btn-sm">Sign Out</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <div id="container" class="container-fluid">
+      <h3 id="infoMessage">Please sign in to add kids and their favorite books</h3>
+      <div class="container-fluid bg-3">
+        <h3>Here are my books!!!</h3><br>
+        <div id="books" class="row">
+          <!-- books here-->
+        </div>
+      </div>
+      <h5 id="result">Relevant messages will be displayed here!!</h5>
+    </div>
+      <!-- Sign Up Modal -->
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="signUpModalLabel">Sign In / Register</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h5 id="sign-up-toggle-text">If not a registered user, then please register</h5>
+              <button id="sign-up-toggle" type="button" class="btn btn-success btn-sm">Sign Up / Register</button>
+              <h5 id="sign-in-toggle-text" class="hidden">If already a registered user, then please sign-in</h5>
+              <button id="sign-in-toggle" type="button" class="btn btn-success hidden btn-sm">Sign in</button>
+            </div>
+            <div class="modal-body">
+              <form id="sign-up" class="hidden">
+                <fieldset>
+                  <legend>Sign Up!</legend>
+                  <input type="text" name="credentials[email]" placeholder="Email here" required>
+                  <input type="password" name="credentials[password]" placeholder="Password here" required>
+                  <input type="password" name="credentials[password_confirmation]" placeholder="Password conformation here" required>
+                  <input type="submit" class="btn btn-primary btn-sm" name="submit" value="Sign up">
+                </fieldset>
+              </form>
+              <form id="change-password" class="hidden">
+                <fieldset>
+                  <legend>Change Password!</legend>
+                  <input type="password" name="passwords[old]" placeholder="Old password here" required>
+                  <input type="password" name="passwords[new]" placeholder="New password here" required>
+                  <input type="submit" class="btn btn-primary btn-sm" name="submit" value="Change Password">
+                </fieldset>
+              </form>
+              <form id="sign-in">
+                <fieldset>
+                  <legend>Sign In!</legend>
+                  <input type="text" name="credentials[email]" placeholder="Email here" required>
+                  <input type="password" name="credentials[password]" placeholder="Password here" required>
+                  <input type="submit" class="btn btn-primary btn-sm" name="submit" value="Sign in">
+                </fieldset>
+              </form><br>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+              </div></br>
+              <p id="content">Informational messages will be displayed here...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Book modal-->
+      <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="bookModalLabel">Manage Books</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="manage-book">
+                <fieldset>
+                  <legend>Manage Books</legend>
+                  <input type="text" name="book[title]" placeholder="Title here" required>
+                  <input type="text" name="book[author]" placeholder="Author here" required>
+                  <input type="text" name="book[description]" placeholder="Description here" required>
+                  <input type="submit" class="btn btn-primary btn-sm" name="submit" value="Update">
+                  <input type="submit" class="btn btn-primary btn-sm" name="submit" value="Add">
+                </fieldset>
+              </form>
+              <br>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+              </div></br>
+              <p id="book-content">Informational messages will be displayed here...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
 </html>
