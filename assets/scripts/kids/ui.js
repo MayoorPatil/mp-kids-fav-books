@@ -18,11 +18,32 @@ const failure = (error) => {
   console.error(error)
 }
 
-const updateBookSuccess = (data) => {
+const updateKidSuccess = (data) => {
   console.log('Yes, updated successfully' + data)
+  $('#result').text('Kid updated successfully!!')
+  $('#kidModal').modal('hide')
 }
 
-const updateBookFailure = (error) => {
+const updateKidFailure = (error) => {
+  console.error(error)
+}
+
+const createKidSuccess = (data) => {
+  console.log('Yes, created successfully' + data)
+  $('#result').text('Kid created successfully!!')
+  $('#kidModal').modal('hide')
+}
+
+const createKidFailure = (error) => {
+  console.error(error)
+}
+
+const deleteKidSuccess = (data) => {
+  console.log('Yes, deleted successfully' + data)
+  $('#result').text('Delete successful!!')
+}
+
+const deleteKidFailure = (error) => {
   console.error(error)
 }
 
@@ -30,6 +51,10 @@ module.exports = {
   getKidsSuccess,
   clearBooks,
   failure,
-  updateBookSuccess,
-  updateBookFailure
+  updateKidSuccess,
+  updateKidFailure,
+  createKidSuccess,
+  createKidFailure,
+  deleteKidSuccess,
+  deleteKidFailure
 }

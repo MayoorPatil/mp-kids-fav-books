@@ -18,22 +18,50 @@ const onClearBooks = (event) => {
 
 let id
 
-const onUpdateKid = (event) => {
+const onManageKid = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.currentTarget)
+  api.updateKid(data, id)
+    .then(ui.updateKidSuccess)
+    .catch(ui.updateKidFailure)
+}
+
+const onCreateKid = (event) => {
   event.preventDefault()
   const data = getFormFields(event.currentTarget)
   console.log(data)
-  api.updateBook(data, id)
-    .then(ui.updateKidSuccess)
-    .catch(ui.updateKidFailure)
+  api.createKid(data)
+    .then(ui.createKidSuccess)
+    .catch(ui.createKidFailure)
+}
+
+const onDelete = (event) => {
+  event.preventDefault()
+  api.deleteKid(event.target.getAttribute('data-id'))
+    .then(ui.deleteKidSuccess)
+    .catch(ui.deleteKidFailure)
 }
 
 const addKidHandlers = () => {
   $('#getKidsButton').on('click', onGetKids)
   $('#clearBooksButton').on('click', onClearBooks)
-  $('#update-kid').on('submit', onUpdateKid)
+  $('#manage-kid').on('submit', onManageKid)
+  $('#create-kid').on('submit', onCreateKid)
+  $('#kidModal').on('show.bs.modal', function (e) {
+    id = $(e.relatedTarget).data('id')
+    if (e.relatedTarget.innerHTML === 'Update Kid') {
+      $('#manage-kid').removeClass('hidden')
+      $('#create-kid').addClass('hidden')
+    } else {
+      $('#create-kid').removeClass('hidden')
+      $('#manage-kid').addClass('hidden')
+    }
+  })
   $('#bookModal').on('shown.bs.modal', function (e) {
     id = $(e.relatedTarget).data('id')
-    console.log('hope this works...' + id)
+  })
+  $(document).on('click', '#deleteButton', function (e) {
+    onDelete(e)
   })
 }
 
