@@ -37,6 +37,7 @@
         <button id="change-pwd-btn" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#signUpModal">Change Password</button>
         <button id="getKidsButton" type="button" class="btn btn-info btn-sm hidden">View Kids</button>
         <button id="add-kid" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#kidModal">Add Kid</button>
+        <button id="add-book" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#bookModal">Add Book</button>
       </form>
       <form id="sign-out" class="navbar-form navbar-right hidden">
           <button type="submit" class="btn btn-warning btn-sm">Sign Out</button>
@@ -117,11 +118,21 @@
             <div class="modal-body">
               <form id="manage-book">
                 <fieldset>
-                  <legend>Manage Books</legend>
+                  <legend>Update Book</legend>
                   <input type="text" name="book[title]" placeholder="Title here" required>
                   <input type="text" name="book[author]" placeholder="Author here" required>
-                  <input type="text" name="book[description]" placeholder="Description here" required>
+                  <input type="text" name="book[content]" placeholder="Content here" required>
+                  <input type="text" name="book[image_url]" placeholder="Image URL here" required>
                   <input type="submit" class="btn btn-primary btn-sm" name="submit" value="Update">
+                </fieldset>
+              </form>
+              <form id="create-book">
+                <fieldset>
+                  <legend>Add Book</legend>
+                  <input type="text" name="book[title]" placeholder="Title here" required>
+                  <input type="text" name="book[author]" placeholder="Author here" required>
+                  <input type="text" name="book[content]" placeholder="Content here" required>
+                  <input type="text" name="book[image_url]" placeholder="Image URL here" required>
                   <input type="submit" class="btn btn-primary btn-sm" name="submit" value="Add">
                 </fieldset>
               </form>

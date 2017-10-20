@@ -37,6 +37,7 @@ const signInSuccess = (data) => {
   $('#sign-in-register').addClass('hidden')
   $('#getKidsButton').removeClass('hidden')
   $('#add-kid').removeClass('hidden')
+  $('#add-book').removeClass('hidden')
   authHelper.setSignInSuccessShowHide()
 }
 
@@ -50,6 +51,7 @@ const signOutSuccess = () => {
   $('#sign-in-register').removeClass('hidden')
   $('#getKidsButton').addClass('hidden')
   $('#add-kid').addClass('hidden')
+  $('#add-book').addClass('hidden')
   $('#kids').html('&nbsp;')
   authHelper.setSignOutSuccessShowHide()
   app.user = null

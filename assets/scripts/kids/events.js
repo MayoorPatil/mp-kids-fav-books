@@ -11,11 +11,6 @@ const onGetKids = (event) => {
     .catch(ui.failure)
 }
 
-const onClearBooks = (event) => {
-  event.preventDefault()
-  ui.clearBooks()
-}
-
 let id
 
 const onManageKid = (event) => {
@@ -44,21 +39,19 @@ const onDelete = (event) => {
 
 const addKidHandlers = () => {
   $('#getKidsButton').on('click', onGetKids)
-  $('#clearBooksButton').on('click', onClearBooks)
   $('#manage-kid').on('submit', onManageKid)
   $('#create-kid').on('submit', onCreateKid)
   $('#kidModal').on('show.bs.modal', function (e) {
     id = $(e.relatedTarget).data('id')
     if (e.relatedTarget.innerHTML === 'Update Kid') {
+      $('#manage-kid').trigger('reset')
       $('#manage-kid').removeClass('hidden')
       $('#create-kid').addClass('hidden')
     } else {
+      $('#create-kid').trigger('reset')
       $('#create-kid').removeClass('hidden')
       $('#manage-kid').addClass('hidden')
     }
-  })
-  $('#bookModal').on('shown.bs.modal', function (e) {
-    id = $(e.relatedTarget).data('id')
   })
   $(document).on('click', '#deleteButton', function (e) {
     onDelete(e)

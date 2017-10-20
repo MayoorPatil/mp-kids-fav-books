@@ -3,7 +3,6 @@
 const showKidsTemplate = require('../templates/kid-listing.handlebars')
 
 const getKidsSuccess = (data) => {
-  console.log(data)
   const showKidsHtml = showKidsTemplate({ kids: data.kids })
   $('#kids').html(showKidsHtml)
   $('#getKidsButton').addClass('hidden')
@@ -19,7 +18,6 @@ const failure = (error) => {
 }
 
 const updateKidSuccess = (data) => {
-  console.log('Yes, updated successfully' + data)
   $('#result').text('Kid updated successfully!!')
   $('#kidModal').modal('hide')
 }
@@ -29,7 +27,6 @@ const updateKidFailure = (error) => {
 }
 
 const createKidSuccess = (data) => {
-  console.log('Yes, created successfully' + data)
   $('#result').text('Kid created successfully!!')
   $('#kidModal').modal('hide')
 }
@@ -39,7 +36,6 @@ const createKidFailure = (error) => {
 }
 
 const deleteKidSuccess = (data) => {
-  console.log('Yes, deleted successfully' + data)
   $('#result').text('Delete successful!!')
 }
 

@@ -15,8 +15,10 @@ $(() => {
 
 const authEvents = require('./auth/events.js')
 const kidEvents = require('./kids/events.js')
+const bookEvents = require('./books/events.js')
 
 $(() => {
   authEvents.addAuthHandlers()
   kidEvents.addKidHandlers()
+  bookEvents.addBookHandlers()
 })
