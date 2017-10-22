@@ -3,8 +3,10 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
+const app = require('../app.js')
 
 const onGetBooks = (event) => {
+  app.current_kid_id = parseInt(event.target.dataset.id)
   event.preventDefault()
   api.getBooks()
     .then(ui.getBooksSuccess)
@@ -16,7 +18,7 @@ let bookId
 const onManageBook = (event) => {
   event.preventDefault()
   const data = getFormFields(event.currentTarget)
-  console.log('i am here data......' + data)
+  data.book.kid_id = app.current_kid_id
   api.updateBook(data, bookId)
     .then(ui.updateBookSuccess)
     .catch(ui.updateBookFailure)
@@ -25,7 +27,9 @@ const onManageBook = (event) => {
 const onCreateBook = (event) => {
   event.preventDefault()
   const data = getFormFields(event.currentTarget)
-  console.log(data)
+  console.log('create book data...', data)
+  data.book.kid_id = app.current_kid_id
+  console.log('create book data after kid_id...', data)
   api.createBook(data)
     .then(ui.createBookSuccess)
     .catch(ui.createBookFailure)

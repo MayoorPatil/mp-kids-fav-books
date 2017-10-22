@@ -6,7 +6,8 @@ const getKidsSuccess = (data) => {
   const showKidsHtml = showKidsTemplate({ kids: data.kids })
   $('#kids').html(showKidsHtml)
   $('#getKidsButton').addClass('hidden')
-  $('#result').text('Kids retrieved successfully!!')
+  $('#home').removeClass('hidden')
+  $('#result').text('Children retrieved successfully!!')
 }
 
 const clearBooks = () => {
@@ -18,7 +19,7 @@ const failure = (error) => {
 }
 
 const updateKidSuccess = (data) => {
-  $('#result').text('Kid updated successfully!!')
+  $('#result').text('Child updated successfully!!')
   $('#kidModal').modal('hide')
 }
 
@@ -27,7 +28,7 @@ const updateKidFailure = (error) => {
 }
 
 const createKidSuccess = (data) => {
-  $('#result').text('Kid created successfully!!')
+  $('#result').text('Child added successfully!!')
   $('#kidModal').modal('hide')
 }
 

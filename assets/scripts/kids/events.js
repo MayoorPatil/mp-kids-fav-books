@@ -38,7 +38,7 @@ const onDelete = (event) => {
 }
 
 const addKidHandlers = () => {
-  $('#getKidsButton').on('click', onGetKids)
+  $('#getKidsButton, #home').on('click', onGetKids)
   $('#manage-kid').on('submit', onManageKid)
   $('#create-kid').on('submit', onCreateKid)
   $('#kidModal').on('show.bs.modal', function (e) {

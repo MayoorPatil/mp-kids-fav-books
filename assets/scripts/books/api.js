@@ -3,13 +3,22 @@
 const app = require('../app.js')
 const config = require('../config.js')
 
+const getKidIdData = () => {
+  return {
+    'book': {
+      'kid_id': app.current_kid_id
+    }
+  }
+}
+
 const getBooks = function () {
   return $.ajax({
     url: config.apiOrigin + '/books', // "http://book-json.herokuapp.com/books"
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token
-    }
+    },
+    data: getKidIdData()
   })
 }
 
@@ -41,7 +50,8 @@ const deleteBook = function (id) {
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + app.user.token
-    }
+    },
+    data: getKidIdData()
   })
 }
 

@@ -13,10 +13,6 @@
   </head>
 
   <body class="container">
-    <!-- <button id="getBooksButton" class="btn btn-default">Get Books!</button>
-    <button id="clearBooksButton" class="btn btn-default">Clear Books!</button>
-    <div id="content" class="content">
-    </div> -->
 <nav class="navbar navbar-inverse">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -27,20 +23,21 @@
         <span class="icon-bar">&nbsp;</span>
         <span class="icon-bar">&nbsp;</span>
       </button>
-      <a class="navbar-brand" href="#">Amala's Favorite Books</a>
+      <a class="navbar-brand" href="#">Favorite Books</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left">
         <button id="sign-in-register" type="button" class="btn btn-success btn-sm" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#signUpModal">Sign-In / Register</button>
-        <button id="change-pwd-btn" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#signUpModal">Change Password</button>
-        <button id="getKidsButton" type="button" class="btn btn-info btn-sm hidden">View Kids</button>
-        <button id="add-kid" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#kidModal">Add Kid</button>
+        <button id="home" type="button" class="btn btn-success btn-sm hidden">Home</button>
+        <button id="getKidsButton" type="button" class="btn btn-warning btn-sm hidden">View Children</button>
+        <button id="add-kid" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#kidModal">Add Child</button>
         <button id="add-book" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#bookModal">Add Book</button>
       </form>
       <form id="sign-out" class="navbar-form navbar-right hidden">
-          <button type="submit" class="btn btn-warning btn-sm">Sign Out</button>
+        <button id="change-pwd-btn" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#signUpModal">Change Password</button>
+        <button type="submit" class="btn btn-danger btn-sm">Sign Out</button>
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -120,9 +117,9 @@
                 <fieldset>
                   <legend>Update Book</legend>
                   <input type="text" name="book[title]" placeholder="Title here" required>
-                  <input type="text" name="book[author]" placeholder="Author here" required>
+                  <input type="text" name="book[author]" placeholder="Author here">
                   <input type="text" name="book[content]" placeholder="Content here" required>
-                  <input type="text" name="book[image_url]" placeholder="Image URL here" required>
+                  <input type="text" name="book[image_url]" placeholder="Image URL here">
                   <input type="submit" class="btn btn-primary btn-sm" name="submit" value="Update">
                 </fieldset>
               </form>
@@ -130,9 +127,9 @@
                 <fieldset>
                   <legend>Add Book</legend>
                   <input type="text" name="book[title]" placeholder="Title here" required>
-                  <input type="text" name="book[author]" placeholder="Author here" required>
+                  <input type="text" name="book[author]" placeholder="Author here">
                   <input type="text" name="book[content]" placeholder="Content here" required>
-                  <input type="text" name="book[image_url]" placeholder="Image URL here" required>
+                  <input type="text" name="book[image_url]" placeholder="Image URL here">
                   <input type="submit" class="btn btn-primary btn-sm" name="submit" value="Add">
                 </fieldset>
               </form>
@@ -150,7 +147,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="kidModalLabel">Manage Kids</h5>
+              <h5 class="modal-title" id="kidModalLabel">Manage Children</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -158,19 +155,19 @@
             <div class="modal-body">
               <form id="manage-kid">
                 <fieldset>
-                  <legend>Update Kid</legend>
+                  <legend>Update Child</legend>
                   <input type="text" name="kid[first_name]" placeholder="Name here" required>
                   <input type="text" name="kid[last_name]" placeholder="Surname here" required>
-                  <input type="text" name="kid[image_url]" placeholder="Image URL here" required>
+                  <input type="text" name="kid[image_url]" placeholder="Image URL here">
                   <input id="modal-update-kid" type="submit" class="btn btn-primary btn-sm" name="submit" value="Update">
                 </fieldset>
               </form>
               <form id="create-kid">
                 <fieldset>
-                  <legend>Add Kid</legend>
+                  <legend>Add Child</legend>
                   <input type="text" name="kid[first_name]" placeholder="Name here" required>
                   <input type="text" name="kid[last_name]" placeholder="Surname here" required>
-                  <input type="text" name="kid[image_url]" placeholder="Image URL here" required>
+                  <input type="text" name="kid[image_url]" placeholder="Image URL here">
                   <input id="modal-add-kid" type="submit" class="btn btn-primary btn-sm" name="submit" value="Add">
                 </fieldset>
               </form>

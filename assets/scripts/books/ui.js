@@ -3,7 +3,6 @@
 const showBooksTemplate = require('../templates/book-listing.handlebars')
 
 const getBooksSuccess = (data) => {
-  console.log(data)
   const showBooksHtml = showBooksTemplate({ books: data.books })
   $('#kids').html(showBooksHtml)
   $('#result').text('Books retrieved successfully!!')
@@ -14,7 +13,6 @@ const failure = (error) => {
 }
 
 const updateBookSuccess = (data) => {
-  console.log('Yes, updated successfully' + data)
   $('#result').text('Book updated successfully!!')
   $('#bookModal').modal('hide')
 }
@@ -24,8 +22,7 @@ const updateBookFailure = (error) => {
 }
 
 const createBookSuccess = (data) => {
-  console.log('Yes, created successfully' + data)
-  $('#result').text('Book created successfully!!')
+  $('#result').text('Book added successfully!!')
   $('#bookModal').modal('hide')
 }
 
@@ -34,8 +31,7 @@ const createBookFailure = (error) => {
 }
 
 const deleteBookSuccess = (data) => {
-  console.log('Yes, deleted successfully' + data)
-  $('#result').text('Deleted book successfully!!')
+  $('#result').text('Book deleted successfully!!')
 }
 
 const deleteBookFailure = (error) => {

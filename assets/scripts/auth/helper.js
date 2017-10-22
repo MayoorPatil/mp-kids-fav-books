@@ -1,21 +1,17 @@
 const showSignUpToggle = function () {
-  $('#sign-up-toggle').addClass('hidden')
-  $('#sign-up-toggle-text').addClass('hidden')
+  $('#sign-up-toggle, #sign-up-toggle-text').addClass('hidden')
 }
 
 const hideSignUpToggle = function () {
-  $('#sign-up-toggle').removeClass('hidden')
-  $('#sign-up-toggle-text').removeClass('hidden')
+  $('#sign-up-toggle, #sign-up-toggle-text').removeClass('hidden')
 }
 
 const showSignInToggle = function () {
-  $('#sign-in-toggle').addClass('hidden')
-  $('#sign-in-toggle-text').addClass('hidden')
+  $('#sign-in-toggle, #sign-in-toggle-text').addClass('hidden')
 }
 
 const hideSignInToggle = function () {
-  $('#sign-in-toggle').removeClass('hidden')
-  $('#sign-in-toggle-text').removeClass('hidden')
+  $('#sign-in-toggle, #sign-in-toggle-text').removeClass('hidden')
 }
 
 const setSignUpToggleShowHide = function () {
@@ -39,9 +35,8 @@ const setSignInToggleShowHide = function () {
 const setOnChangePwdShowHide = function () {
   clearFormInputFields('change-password')
   $('#content').text('Informational messages will be displayed here...')
-  $('#sign-up').addClass('hidden')
+  $('#sign-up, #sign-in').addClass('hidden')
   showSignInToggle()
-  $('#sign-in').addClass('hidden')
   showSignUpToggle()
   $('#change-password').removeClass('hidden')
   $('#signUpModalLabel').text('Change Password')
@@ -50,8 +45,7 @@ const setOnChangePwdShowHide = function () {
 const setSignInSuccessShowHide = function () {
   clearFormInputFields('sign-in')
   clearFormInputFields('sign-up')
-  $('#sign-out').removeClass('hidden')
-  $('#change-pwd-btn').removeClass('hidden')
+  $('#sign-out, #change-pwd-btn').removeClass('hidden')
 }
 
 const setChangePasswordSuccessShowHide = function () {
@@ -62,8 +56,7 @@ const setChangePasswordSuccessShowHide = function () {
 }
 
 const setSignOutSuccessShowHide = function () {
-  $('#sign-out').addClass('hidden')
-  $('#change-pwd-btn').addClass('hidden')
+  $('#sign-out, #change-pwd-btn').addClass('hidden')
 }
 
 const clearFormInputFields = function (formId) {
