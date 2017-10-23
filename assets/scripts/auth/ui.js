@@ -4,18 +4,6 @@ const app = require('../app.js')
 const authHelper = require('./helper')
 const showKidsTemplate = require('../templates/kid-listing.handlebars')
 
-const success = (data) => {
-  if (data) {
-    console.log(data)
-  } else {
-    console.log('Success')
-  }
-}
-
-const failure = (error) => {
-  console.error(error)
-}
-
 const signUpSuccess = function (data) {
   $('#result').text(data.user.email + ' signed up successfully!!')
   authHelper.clearFormInputFields('sign-up')
@@ -66,6 +54,7 @@ const clearApp = () => {
   delete app.current_kid_id
   delete app.kids
   delete app.user
+  delete app.books
 }
 
 const signOutFailure = function (error) {
@@ -88,8 +77,6 @@ const changePasswordFailure = function (error) {
 }
 
 module.exports = {
-  success,
-  failure,
   signUpSuccess,
   signUpFailure,
   signInSuccess,

@@ -1,15 +1,19 @@
 'use strict'
 
 const showBooksTemplate = require('../templates/book-listing.handlebars')
+const app = require('../app.js')
 
 const getBooksSuccess = (data) => {
   const showBooksHtml = showBooksTemplate({ books: data.books })
   $('#kids').html(showBooksHtml)
-  $('#result').text('Books retrieved successfully!!')
+  if (app.current_kid_id === undefined) {
+    $('#result').text('Books retrieved successfully!!')
+  }
+  app.books = data.books
 }
 
 const failure = (error) => {
-  console.error(error)
+  $('#book-content').text('Something went wrong, please try again - ' + error.statusText)
 }
 
 const updateBookSuccess = (data) => {
@@ -18,7 +22,7 @@ const updateBookSuccess = (data) => {
 }
 
 const updateBookFailure = (error) => {
-  console.error(error)
+  $('#book-content').text('Something went wrong, please try again - ' + error.statusText)
 }
 
 const createBookSuccess = (data) => {
@@ -27,7 +31,7 @@ const createBookSuccess = (data) => {
 }
 
 const createBookFailure = (error) => {
-  console.error(error)
+  $('#book-content').text('Something went wrong, please try again - ' + error.statusText)
 }
 
 const deleteBookSuccess = (data) => {
@@ -35,7 +39,7 @@ const deleteBookSuccess = (data) => {
 }
 
 const deleteBookFailure = (error) => {
-  console.error(error)
+  $('#book-content').text('Something went wrong, please try again - ' + error.statusText)
 }
 
 module.exports = {

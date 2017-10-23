@@ -10,12 +10,9 @@ const getKidsSuccess = (data) => {
   delete app.current_kid_id
 }
 
-const clearBooks = () => {
-  $('.content').empty()
-}
-
 const failure = (error) => {
-  console.error(error)
+  $('#kid-content').text('Sorry, some problem retrieving the children, please try later - ' + error.statusText)
+  $('#result').text('Sorry, some problem retrieving the children, please try later - ' + error.statusText)
 }
 
 const updateKidSuccess = (data) => {
@@ -25,7 +22,8 @@ const updateKidSuccess = (data) => {
 }
 
 const updateKidFailure = (error) => {
-  console.error(error)
+  $('#kid-content').text('Sorry, some problem while updating, please try later - ' + error.statusText)
+  $('#result').text('Sorry, some problem while updating, please try later - ' + error.statusText)
 }
 
 const createKidSuccess = (data) => {
@@ -35,7 +33,8 @@ const createKidSuccess = (data) => {
 }
 
 const createKidFailure = (error) => {
-  console.error(error)
+  $('#kid-content').text('Sorry, some problem while adding, please try later - ' + error.statusText)
+  $('#result').text('Sorry, some problem while adding, please try later - ' + error.responseText)
 }
 
 const deleteKidSuccess = (data) => {
@@ -44,12 +43,16 @@ const deleteKidSuccess = (data) => {
 }
 
 const deleteKidFailure = (error) => {
-  console.error(error)
+  $('#kid-content').text('Sorry, some problem while deleting, please try later - ' + error.statusText)
+  if (error.status === 500 && error.responseJSON.exception.includes('ForeignKeyViolation')) {
+    $('#result').text('This child has associated favorite books. Please delete the books first')
+  } else {
+    $('#result').text('Sorry, some problem while deleting, please try later - ' + error.responseText)
+  }
 }
 
 module.exports = {
   getKidsSuccess,
-  clearBooks,
   failure,
   updateKidSuccess,
   updateKidFailure,

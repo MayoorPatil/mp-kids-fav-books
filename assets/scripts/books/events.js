@@ -6,8 +6,10 @@ const getFormFields = require('../../../lib/get-form-fields')
 const app = require('../app.js')
 
 const onGetBooks = (event) => {
-  app.current_kid_id = parseInt(event.target.dataset.id)
-  event.preventDefault()
+  if (event !== undefined) {
+    app.current_kid_id = parseInt(event.target.dataset.id)
+    event.preventDefault()
+  }
   api.getBooks()
     .then(ui.getBooksSuccess)
     .catch(ui.failure)
@@ -21,6 +23,7 @@ const onManageBook = (event) => {
   data.book.kid_id = app.current_kid_id
   api.updateBook(data, bookId)
     .then(ui.updateBookSuccess)
+    .then(onGetBooks)
     .catch(ui.updateBookFailure)
 }
 
@@ -30,6 +33,7 @@ const onCreateBook = (event) => {
   data.book.kid_id = app.current_kid_id
   api.createBook(data)
     .then(ui.createBookSuccess)
+    .then(onGetBooks)
     .catch(ui.createBookFailure)
 }
 
@@ -37,7 +41,16 @@ const onDeleteBook = (event) => {
   event.preventDefault()
   api.deleteBook(event.target.getAttribute('data-id'))
     .then(ui.deleteBookSuccess)
+    .then(onGetBooks)
     .catch(ui.deleteBookFailure)
+}
+
+const populateForm = (id) => {
+  const book = app.books.find((ele) => ele.id === id)
+  $("[name|='book[title]']").val(book.title)
+  $("[name|='book[author]']").val(book.author)
+  $("[name|='book[content]']").val(book.content)
+  $("[name|='book[image_url]']").val(book.image_url)
 }
 
 const addBookHandlers = () => {
@@ -51,6 +64,7 @@ const addBookHandlers = () => {
     if (e.relatedTarget.innerHTML === 'Update Book') {
       $('#manage-book').trigger('reset')
       $('#manage-book').removeClass('hidden')
+      populateForm(bookId)
       $('#create-book').addClass('hidden')
     } else {
       if (app.kids.length === 0) {
