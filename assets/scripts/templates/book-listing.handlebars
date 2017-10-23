@@ -1,17 +1,21 @@
-{{#each books as |book|}}
-<div data-id="{{book.id}}" class="media">
-    <div class="media-left">
-      <img src="{{book.image_url}}" class="media-object img-thumbnail" alt="Image" width="150" height="100">
+{{#if books}}
+  {{#each books as |book|}}
+  <div data-id="{{book.id}}" class="media">
+      <div class="media-left">
+        <img src="{{book.image_url}}" class="media-object img-thumbnail" alt="Image" width="150" height="100">
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{book.title}}</h4>
+        <ul data-id="{{book.id}}">
+        <li>Author: {{book.author}}</li>
+        <li>Description: {{book.content}}</li>
+        </ul>
+      </div><br>
+      <button data-id="{{book.id}}" type="button" class="btn btn-warning btn-xs" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#bookModal">Update Book</button>
+      <button data-id="{{book.id}}" id="deleteBookButton" type="button" class="btn btn-danger btn-xs">Delete</button>
     </div>
-    <div class="media-body">
-      <h4 class="media-heading">{{book.title}}</h4>
-      <ul data-id="{{book.id}}">
-      <li>Author: {{book.author}}</li>
-      <li>Description: {{book.content}}</li>
-      </ul>
-    </div><br>
-    <button data-id="{{book.id}}" type="button" class="btn btn-warning btn-xs" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#bookModal">Update Book</button>
-    <button data-id="{{book.id}}" id="deleteBookButton" type="button" class="btn btn-danger btn-xs">Delete</button>
-  </div>
-  <hr>
-{{/each}}
+    <hr>
+  {{/each}}
+{{else}}
+  {{> book-partial}}
+{{/if}}

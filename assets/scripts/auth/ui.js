@@ -2,6 +2,7 @@
 
 const app = require('../app.js')
 const authHelper = require('./helper')
+const showKidsTemplate = require('../templates/kid-listing.handlebars')
 
 const success = (data) => {
   if (data) {
@@ -36,7 +37,15 @@ const signInSuccess = (data) => {
   $('#infoMessage').html('&nbsp;')
   $('#sign-in-register').addClass('hidden')
   $('#getKidsButton, #add-kid, #add-book').removeClass('hidden')
+  displayUsersChildren()
   authHelper.setSignInSuccessShowHide()
+}
+
+const displayUsersChildren = () => {
+  app.kids = app.user.kids
+  const showKidsHtml = showKidsTemplate({ kids: app.user.kids })
+  $('#kids').html(showKidsHtml)
+  $('#home').removeClass('hidden')
 }
 
 const signInFailure = function (error) {
@@ -50,7 +59,13 @@ const signOutSuccess = () => {
   $('#getKidsButton, #home, #add-kid, #add-book').addClass('hidden')
   $('#kids').html('&nbsp;')
   authHelper.setSignOutSuccessShowHide()
-  app.user = null
+  clearApp()
+}
+
+const clearApp = () => {
+  delete app.current_kid_id
+  delete app.kids
+  delete app.user
 }
 
 const signOutFailure = function (error) {

@@ -27,9 +27,7 @@ const onManageBook = (event) => {
 const onCreateBook = (event) => {
   event.preventDefault()
   const data = getFormFields(event.currentTarget)
-  console.log('create book data...', data)
   data.book.kid_id = app.current_kid_id
-  console.log('create book data after kid_id...', data)
   api.createBook(data)
     .then(ui.createBookSuccess)
     .catch(ui.createBookFailure)
@@ -46,6 +44,7 @@ const addBookHandlers = () => {
   $(document).on('click', '#getBooks', function (e) {
     onGetBooks(e)
   })
+  $('getBooksHidden').on('click', onGetBooks)
   $('#manage-book').on('submit', onManageBook)
   $('#create-book').on('submit', onCreateBook)
   $('#bookModal').on('show.bs.modal', function (e) {
@@ -55,9 +54,22 @@ const addBookHandlers = () => {
       $('#manage-book').removeClass('hidden')
       $('#create-book').addClass('hidden')
     } else {
-      $('#create-book').trigger('reset')
-      $('#create-book').removeClass('hidden')
-      $('#manage-book').addClass('hidden')
+      if (app.kids.length === 0) {
+        $('#bookModalBody').addClass('hidden')
+        $('#bookModalLabel').html('Please add children before you "Add book"')
+      } else {
+        console.log('value....', app.current_kid_id)
+        if (app.current_kid_id === undefined) {
+          $('#bookModalBody').addClass('hidden')
+          $('#bookModalLabel').html('Please click "View Favorite Books" button and then "Add Book"')
+        } else {
+          $('#bookModalBody').removeClass('hidden')
+          $('#bookModalLabel').html('Manage Books')
+          $('#create-book').trigger('reset')
+          $('#create-book').removeClass('hidden')
+          $('#manage-book').addClass('hidden')
+        }
+      }
     }
   })
   $(document).on('click', '#deleteBookButton', function (e) {

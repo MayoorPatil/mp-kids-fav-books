@@ -31,7 +31,8 @@
       <form class="navbar-form navbar-left">
         <button id="sign-in-register" type="button" class="btn btn-success btn-sm" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#signUpModal">Sign-In / Register</button>
         <button id="home" type="button" class="btn btn-success btn-sm hidden">Home</button>
-        <button id="getKidsButton" type="button" class="btn btn-warning btn-sm hidden">View Children</button>
+        <button id="getBooksHidden" type="button" class="btn btn-success btn-sm hidden">Home</button>
+        <!--<button id="getKidsButton" type="button" class="btn btn-warning btn-sm hidden">View Children</button>-->
         <button id="add-kid" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#kidModal">Add Child</button>
         <button id="add-book" type="button" class="btn btn-info btn-sm hidden" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-target="#bookModal">Add Book</button>
       </form>
@@ -112,7 +113,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div id='bookModalBody' class="modal-body">
               <form id="manage-book">
                 <fieldset>
                   <legend>Update Book</legend>

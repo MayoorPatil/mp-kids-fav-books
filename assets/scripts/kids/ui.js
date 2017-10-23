@@ -1,13 +1,13 @@
 'use strict'
 
 const showKidsTemplate = require('../templates/kid-listing.handlebars')
+const app = require('../app.js')
 
 const getKidsSuccess = (data) => {
   const showKidsHtml = showKidsTemplate({ kids: data.kids })
+  app.kids = data.kids
   $('#kids').html(showKidsHtml)
-  $('#getKidsButton').addClass('hidden')
-  $('#home').removeClass('hidden')
-  $('#result').text('Children retrieved successfully!!')
+  delete app.current_kid_id
 }
 
 const clearBooks = () => {
@@ -19,6 +19,7 @@ const failure = (error) => {
 }
 
 const updateKidSuccess = (data) => {
+  $('#home').click()
   $('#result').text('Child updated successfully!!')
   $('#kidModal').modal('hide')
 }
@@ -28,6 +29,7 @@ const updateKidFailure = (error) => {
 }
 
 const createKidSuccess = (data) => {
+  $('#home').click()
   $('#result').text('Child added successfully!!')
   $('#kidModal').modal('hide')
 }
@@ -37,6 +39,7 @@ const createKidFailure = (error) => {
 }
 
 const deleteKidSuccess = (data) => {
+  $('#home').click()
   $('#result').text('Delete successful!!')
 }
 

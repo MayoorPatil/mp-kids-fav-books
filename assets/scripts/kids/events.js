@@ -3,6 +3,7 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
+const app = require('../app.js')
 
 const onGetKids = (event) => {
   event.preventDefault()
@@ -24,7 +25,6 @@ const onManageKid = (event) => {
 const onCreateKid = (event) => {
   event.preventDefault()
   const data = getFormFields(event.currentTarget)
-  console.log(data)
   api.createKid(data)
     .then(ui.createKidSuccess)
     .catch(ui.createKidFailure)
@@ -37,8 +37,15 @@ const onDelete = (event) => {
     .catch(ui.deleteKidFailure)
 }
 
+const populateForm = (id) => {
+  const kid = app.kids.find((ele) => ele.id === id)
+  $("[name|='kid[first_name]']").val(kid.first_name)
+  $("[name|='kid[last_name]']").val(kid.last_name)
+  $("[name|='kid[image_url]']").val(kid.image_url)
+}
+
 const addKidHandlers = () => {
-  $('#getKidsButton, #home').on('click', onGetKids)
+  $('#home').on('click', onGetKids)
   $('#manage-kid').on('submit', onManageKid)
   $('#create-kid').on('submit', onCreateKid)
   $('#kidModal').on('show.bs.modal', function (e) {
@@ -46,6 +53,7 @@ const addKidHandlers = () => {
     if (e.relatedTarget.innerHTML === 'Update Kid') {
       $('#manage-kid').trigger('reset')
       $('#manage-kid').removeClass('hidden')
+      populateForm(id)
       $('#create-kid').addClass('hidden')
     } else {
       $('#create-kid').trigger('reset')

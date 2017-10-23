@@ -54,13 +54,10 @@ const onChangePwdButton = function (event) {
 
 const onSignInRegister = function (event) {
   event.preventDefault()
-  $('#sign-up').addClass('hidden')
-  $('#sign-in-toggle').addClass('hidden')
-  $('#sign-in-toggle-text').addClass('hidden')
-  $('#sign-in').removeClass('hidden')
-  $('#sign-up-toggle').removeClass('hidden')
-  $('#sign-up-toggle-text').removeClass('hidden')
-  $('#change-password').addClass('hidden')
+  $('#sign-in').trigger('reset')
+  $('#sign-up').trigger('reset')
+  $('#sign-up, #sign-in-toggle, #sign-in-toggle-text, #change-password').addClass('hidden')
+  $('#sign-in, #sign-up-toggle, #sign-up-toggle-text').removeClass('hidden')
   $('#signUpModalLabel').text('Sign In / Register')
   $('#content').text('Informational messages will be displayed here...')
 }
