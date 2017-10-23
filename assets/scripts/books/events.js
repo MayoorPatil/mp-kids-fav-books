@@ -44,7 +44,6 @@ const addBookHandlers = () => {
   $(document).on('click', '#getBooks', function (e) {
     onGetBooks(e)
   })
-  $('getBooksHidden').on('click', onGetBooks)
   $('#manage-book').on('submit', onManageBook)
   $('#create-book').on('submit', onCreateBook)
   $('#bookModal').on('show.bs.modal', function (e) {
@@ -58,7 +57,6 @@ const addBookHandlers = () => {
         $('#bookModalBody').addClass('hidden')
         $('#bookModalLabel').html('Please add children before you "Add book"')
       } else {
-        console.log('value....', app.current_kid_id)
         if (app.current_kid_id === undefined) {
           $('#bookModalBody').addClass('hidden')
           $('#bookModalLabel').html('Please click "View Favorite Books" button and then "Add Book"')
