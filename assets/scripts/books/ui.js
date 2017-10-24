@@ -4,8 +4,9 @@ const showBooksTemplate = require('../templates/book-listing.handlebars')
 const app = require('../app.js')
 
 const getBooksSuccess = (data) => {
+  app.books = data.books
   const showBooksHtml = showBooksTemplate({ books: data.books })
-  $('#kids').html(showBooksHtml)
+  $('#kids').html(getImageHTML() + showBooksHtml)
   if (app.current_kid_id === undefined || data.books.length === 0) {
     if (showBooksHtml.includes('found')) {
       $('#result').text('')
@@ -13,7 +14,17 @@ const getBooksSuccess = (data) => {
       $('#result').text('Books retrieved successfully!!')
     }
   }
-  app.books = data.books
+}
+
+const getImageHTML = () => {
+  if (app.current_kid_id === undefined || app.books === undefined || app.books.length === 0) {
+    return ''
+  } else {
+    const child = app.kids.find((ele) => ele.id === app.current_kid_id)
+    return "<div class='container-fluid bg-1 text-center'><h4>Here are my favorite books!!</h4><img src=\"" +
+    child.image_url +
+    "\" class='img-circle' alt='Child' width='150' height='150'></div>"
+  }
 }
 
 const failure = (error) => {
