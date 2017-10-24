@@ -25,9 +25,9 @@ Here are some steps on how to use the application:
 3.  Once signed in users have the option to change password or signout
 4.  Once users sign-in he/she can add their chlidren
 5.  Once a child is added
-  -   Users can then add favorite books to each individual child
+-   Users can then add favorite books to each individual child
     -   Once a book is added, users can update or delete a book
-  -   Users can update or delete a child, or view favorite books for that child
+-   Users can update or delete a child, or view favorite books for that child
 6.  Users can view all children at any point by clicking the `Home` button
 
 Here is the link to the application [`Favorite Books`](https://mayoorpatil.github.io/mp-kids-fav-books/index.html)
@@ -42,8 +42,8 @@ The following tools and technologies where used to build this application
 2.  GIT for code repository and version control
 3.  ATOM javascript editor
 4.  Ruby on Rails is used to build the backend APIs
--   Here is the link to the [`Backend Repo`](https://github.com/MayoorPatil/map-rails-api)
--   Here is the link to the [`Backend Endpoint`](https://map-rails-api.herokuapp.com/)
+    -   Here is the link to the [`Backend Repo`](https://github.com/MayoorPatil/map-rails-api)
+    -   Here is the link to the [`Backend Endpoint`](https://map-rails-api.herokuapp.com/)
 
 ## Development Process
 
