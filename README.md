@@ -9,7 +9,7 @@
 In the future plan is to include support for the following:
 
 -   Track childrens favorite videos
--   List the books and videos for selection that are stored in the backend database
+-   List the books and videos for selection, that are available from the backend database
 
 I am open to feedback and suggestions. If you have any please connect and share
 
@@ -25,10 +25,10 @@ Here are some steps on how to use the application:
 3.  Once signed in users have the option to change password or signout
 4.  Once users sign-in he/she can add their chlidren
 5.  Once a child is added
-  1. Users can then add favorite books to each individual child
-    a. Once a book is added, users can update or delete the book
-  2. Users can update or delete a child, or view favorite books of that child
-6.  Users can view all children at point by clicking the `Home` button
+  -   Users can then add favorite books to each individual child
+    -   Once a book is added, users can update or delete a book
+  -   Users can update or delete a child, or view favorite books for that child
+6.  Users can view all children at any point by clicking the `Home` button
 
 Here is the link to the application [`Favorite Books`](https://mayoorpatil.github.io/mp-kids-fav-books/index.html)
 
@@ -42,8 +42,8 @@ The following tools and technologies where used to build this application
 2.  GIT for code repository and version control
 3.  ATOM javascript editor
 4.  Ruby on Rails is used to build the backend APIs
-    a. Here is the link to the [`Backend Repo`](https://github.com/MayoorPatil/map-rails-api)
-    b. Here is the link to the [`Backend Endpoint`](https://map-rails-api.herokuapp.com/)
+-   Here is the link to the [`Backend Repo`](https://github.com/MayoorPatil/map-rails-api)
+-   Here is the link to the [`Backend Endpoint`](https://map-rails-api.herokuapp.com/)
 
 ## Development Process
 
