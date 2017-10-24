@@ -6,7 +6,7 @@ const app = require('../app.js')
 const getBooksSuccess = (data) => {
   const showBooksHtml = showBooksTemplate({ books: data.books })
   $('#kids').html(showBooksHtml)
-  if (app.current_kid_id === undefined) {
+  if (app.current_kid_id === undefined || data.books.length === 0) {
     if (showBooksHtml.includes('found')) {
       $('#result').text('')
     } else {
