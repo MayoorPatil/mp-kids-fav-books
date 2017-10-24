@@ -7,6 +7,7 @@ const app = require('../app.js')
 
 const onGetBooks = (event) => {
   if (event !== undefined) {
+    $('#result').text('Book retrieved successfully!!')
     app.current_kid_id = parseInt(event.target.dataset.id)
     event.preventDefault()
   }
@@ -60,8 +61,10 @@ const addBookHandlers = () => {
   $('#manage-book').on('submit', onManageBook)
   $('#create-book').on('submit', onCreateBook)
   $('#bookModal').on('show.bs.modal', function (e) {
+    $('#result').text('')
     bookId = $(e.relatedTarget).data('id')
     if (e.relatedTarget.innerHTML === 'Update Book') {
+      $('#bookModalBody').removeClass('hidden')
       $('#manage-book').trigger('reset')
       $('#manage-book').removeClass('hidden')
       populateForm(bookId)

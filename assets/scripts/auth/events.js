@@ -48,6 +48,7 @@ const onSignInToggle = function (event) {
 }
 
 const onChangePwdButton = function (event) {
+  $('#result').text('')
   event.preventDefault()
   authHelper.setOnChangePwdShowHide()
 }

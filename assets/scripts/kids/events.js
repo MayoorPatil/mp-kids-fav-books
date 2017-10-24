@@ -6,6 +6,9 @@ const getFormFields = require('../../../lib/get-form-fields')
 const app = require('../app.js')
 
 const onGetKids = (event) => {
+  if (event.originalEvent !== undefined) {
+    $('#result').text('You are home!!')
+  }
   event.preventDefault()
   api.getKids()
     .then(ui.getKidsSuccess)
@@ -49,8 +52,9 @@ const addKidHandlers = () => {
   $('#manage-kid').on('submit', onManageKid)
   $('#create-kid').on('submit', onCreateKid)
   $('#kidModal').on('show.bs.modal', function (e) {
+    $('#result').text('')
     id = $(e.relatedTarget).data('id')
-    if (e.relatedTarget.innerHTML === 'Update Kid') {
+    if (e.relatedTarget.innerHTML === 'Update Child') {
       $('#manage-kid').trigger('reset')
       $('#manage-kid').removeClass('hidden')
       populateForm(id)

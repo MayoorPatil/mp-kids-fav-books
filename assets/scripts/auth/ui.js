@@ -22,8 +22,8 @@ const signInSuccess = (data) => {
   app.user = data.user
   $('#result').text('Signed in successfully!!')
   $('#signUpModal').modal('hide')
-  $('#infoMessage').html('&nbsp;')
-  $('#sign-in-register').addClass('hidden')
+  // $('#infoMessage').html('&nbsp;')
+  $('#sign-in-register, #infoMessage').addClass('hidden')
   $('#getKidsButton, #add-kid, #add-book').removeClass('hidden')
   displayUsersChildren()
   authHelper.setSignInSuccessShowHide()
@@ -43,7 +43,7 @@ const signInFailure = function (error) {
 
 const signOutSuccess = () => {
   $('#result').text('Signed out successfully!!')
-  $('#sign-in-register').removeClass('hidden')
+  $('#sign-in-register, #infoMessage').removeClass('hidden')
   $('#getKidsButton, #home, #add-kid, #add-book').addClass('hidden')
   $('#kids').html('&nbsp;')
   authHelper.setSignOutSuccessShowHide()
